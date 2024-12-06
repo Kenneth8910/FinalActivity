@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang=en>
+
+    <head>
+        <style>
+        .topbar{
+            color: white;
+            width: 100%;
+            text-align: center;
+            background-color: #818f85;
+            height: 70px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .sidebar {
+            height: calc(100vh - 70px);
+            width: 225px;
+            background-color: #7c837e;
+            color: white;
+            padding: 15px;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(-100%);
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .sidebar a{
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+            margin: 5px;
+            transition: background 0.5s;
+        }
+
+        .sidebar a:hover{
+            background-color: grey;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px black;
+        }
+
+        .sidebar a:last-child{
+            position: absolute;
+            bottom: 5%;
+
+        }
+
+        .sidebar h2{
+            text-align: center;
+        }
+
+        .content {
+            margin-top: 80px;
+        }
+
+        @media (max-width: 2000px){
+        .menu-toggle {
+            display: block;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+        }
+
+        .menu-toggle:hover {
+            background-color: grey;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px black
+        }
+            .sidebar {
+                width: 250px;
+                transform: translateX(-100%);
+            }
+            .sidebar.active{
+                transform: translateX(0);
+            }
+        }
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="topbar">
+            <button class="menu-toggle" style="color: white">&#9776;</button>
+            <h2>RESUME</h2>
+        </div>
+
+        <div class="sidebar">
+            <h2>Admin Menu</h2>
+            <a href="dashboard.blade.php">Dashboard</a>
+            <a href="viewing_page.blade.php">View CVs</a>
+            <a href="logout.blade.php">Logout</a>
+        </div>
+
+        <script>
+            const menuToggle = document.querySelector('.menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+    
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+            });
+        </script>
+
+    </body>
+</html>
